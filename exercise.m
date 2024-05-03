@@ -1,4 +1,4 @@
-function exercise(freq, evenOddAll, nHarmonics, precision)
+function [harmonicSeries] = exercise(freq, evenOddAll, nHarmonics, precision)
 % EXERCISE  Calculates harmonics.
 %
 % EXERCISE(freq, evenOddAll, nHarmonics)
@@ -30,7 +30,7 @@ function exercise(freq, evenOddAll, nHarmonics, precision)
 
     % creates array for output
     harmonicArray = ones(1, nHarmonics) * freq;
-    
+
     % Necessary for below element-wise multiplication
     nHarmonics = double(nHarmonics);
   
@@ -46,6 +46,8 @@ function exercise(freq, evenOddAll, nHarmonics, precision)
     else
         error("Wrong harmonic parameter");
     end
+
+    
     
     % prints outcome of the calculation
     fprintf("%d first %s harmonics of %.2f Hz:\n", ...
@@ -55,9 +57,13 @@ function exercise(freq, evenOddAll, nHarmonics, precision)
     % and throws error if wrong order was specified
     if precision==1
         disp([num2str(harmonicArray, '%.2f Hz   ')]);
+        harmonicSeries = round(harmonicArray, 2);
     elseif ~precision
         disp([num2str(harmonicArray, '%.0f Hz   ')]);
+        harmonicSeries = round(harmonicArray, 0);
     else
         error("Wrong precision parameter");
     end
 end
+
+% commit latest changes - added output
